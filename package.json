@@ -7,13 +7,15 @@
   "author": "rcronin <rcronin@daytonfreight.com>",
   "license": "MIT",
   "exports": {
-    ".": "./dist/index.d.ts"
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*"
-      ]
+    ".": {
+      "import": {
+        "types": "./lib/index.d.mts",
+        "default": "./lib/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
+      }
     }
   },
   "files": [
