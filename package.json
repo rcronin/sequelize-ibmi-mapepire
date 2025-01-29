@@ -37,8 +37,5 @@
   },
   "peerDependencies": {
     "@sequelize/core": "7.0.0-alpha.44"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   }
 }
