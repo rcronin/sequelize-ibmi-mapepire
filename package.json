@@ -1,6 +1,6 @@
 {
   "name": "@rcronin/sequelize-ibmi-mapepire",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "IBM i (via Mapepire) Sequelize V7 Dialect",
   "type": "commonjs",
   "repository": "https://github.com/rcronin/sequelize-ibmi-mapepire.git",
