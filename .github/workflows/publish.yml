@@ -32,6 +32,7 @@ jobs:
           committer_email: actions@github.com
           fetch: true
           message: '@chore: bump version'
+          pull: '--rebase --autostash'
 
       - name: Publish package
         run: yarn publish --access public
