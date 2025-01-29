@@ -27,13 +27,12 @@ jobs:
       - name: Bump version
         run: yarn version --patch --no-git-tag-version
 
-      - name: Commit version bump
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add package.json
-          git commit -m "chore: bump version"
-          git push
+      - uses: EndBug/add-and-commit@v9
+        with:
+          author_name: Actions Bot
+          author_email: github-actions[bot]@users.noreply.github.com
+          fetch: true
+          message: '@chore: bump version'
 
       - name: Publish package
         run: yarn publish --access public
