@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "allowJs": true,
     "declaration": true,
+    "declarationMap": true,
     "outDir": "./dist",
     "strict": true,
     "rootDir": "./src",
@@ -15,7 +16,42 @@
     "stripInternal": true,
     "exactOptionalPropertyTypes": true,
     "experimentalDecorators": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "paths": {
+      "@sequelize/core/_non-semver-use-at-your-own-risk_/utils/check.js": [
+        "./node_modules/@sequelize/core/lib/utils/check.d.ts"
+      ],
+      "@sequelize/core/_non-semver-use-at-your-own-risk_/utils/sql.js": [
+        "./node_modules/@sequelize/core/lib/utils/sql.d.ts"
+      ],
+      "@sequelize/core/_non-semver-use-at-your-own-risk_/abstract-dialect/data-types.js": [
+        "./node_modules/@sequelize/core/lib/abstract-dialect/data-types.d.ts"
+      ],
+      "@sequelize/core/_non-semver-use-at-your-own-risk_/utils/logger.js": [
+        "./node_modules/@sequelize/core/lib/utils/logger.d.ts"
+      ],
+      "@sequelize/core/_non-semver-use-at-your-own-risk_/abstract-dialect/query-generator-typescript.js": [
+        "./node_modules/@sequelize/core/lib/abstract-dialect/query-generator-typescript.d.ts"
+      ],
+      "@sequelize/core/_non-semver-use-at-your-own-risk_/utils/join-sql-fragments.js": [
+        "./node_modules/@sequelize/core/lib/utils/join-sql-fragments.d.ts"
+      ],
+      "@sequelize/core/_non-semver-use-at-your-own-risk_/utils/object.js": [
+        "./node_modules/@sequelize/core/lib/utils/object.d.ts"
+      ],
+      "@sequelize/core/_non-semver-use-at-your-own-risk_/utils/string.js": [
+        "./node_modules/@sequelize/core/lib/utils/string.d.ts"
+      ],
+      "@sequelize/core/_non-semver-use-at-your-own-risk_/abstract-dialect/query-generator-internal.js": [
+        "./node_modules/@sequelize/core/lib/abstract-dialect/query-generator-internal.d.ts"
+      ],
+      "@sequelize/core/_non-semver-use-at-your-own-risk_/abstract-dialect/query-generator.internal-types.js": [
+        "./node_modules/@sequelize/core/lib/abstract-dialect/query-generator.internal-types.d.ts"
+      ],
+      "@sequelize/core/_non-semver-use-at-your-own-risk_/abstract-dialect/query-interface-internal.js": [
+        "./node_modules/@sequelize/core/lib/abstract-dialect/query-interface-internal.d.ts"
+      ]
+    }
   },
   "include": ["./src/**/*.ts", "./src/**/*.js", "./src/**/*.mjs"],
 }
