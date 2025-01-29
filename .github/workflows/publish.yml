@@ -29,8 +29,8 @@ jobs:
 
       - uses: EndBug/add-and-commit@v9
         with:
-          author_name: Actions Bot
-          author_email: github-actions[bot]@users.noreply.github.com
+          committer_name: GitHub Actions
+          committer_email: actions@github.com
           fetch: true
           message: '@chore: bump version'
 
