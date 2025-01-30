@@ -1,6 +1,6 @@
 {
   "name": "@rcronin/sequelize-ibmi-mapepire",
-  "version": "0.0.6",
+  "version": "0.0.1",
   "description": "IBM i (via Mapepire) Sequelize V7 Dialect",
   "type": "commonjs",
   "repository": "https://github.com/rcronin/sequelize-ibmi-mapepire.git",
@@ -25,7 +25,7 @@
   "types": "./dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "tsc && cp src/query.d.ts dist/query.d.ts && cp src/query-generator.d.ts dist/query-generator.d.ts"
+    "build": "./build.sh"
   },
   "devDependencies": {
     "@sequelize/core": "7.0.0-alpha.44",
