@@ -25,7 +25,7 @@
   "types": "./dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "tsc"
+    "build": "tsc && cp src/query.d.ts dist/query.d.ts && cp src/query-generator.d.ts dist/query-generator.d.ts"
   },
   "devDependencies": {
     "@sequelize/core": "7.0.0-alpha.44",

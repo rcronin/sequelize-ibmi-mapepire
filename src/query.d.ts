@@ -1,3 +1,4 @@
 import { AbstractQuery } from '@sequelize/core';
 
-export class IBMiQuery extends AbstractQuery {}
+export class IBMiQuery extends AbstractQuery {
+}

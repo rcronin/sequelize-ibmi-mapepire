@@ -51,7 +51,8 @@
       "@sequelize/core/_non-semver-use-at-your-own-risk_/abstract-dialect/query-interface-internal.js": [
         "./node_modules/@sequelize/core/lib/abstract-dialect/query-interface-internal.d.ts"
       ]
-    }
+    }    
   },
   "include": ["./src/**/*.ts", "./src/**/*.js", "./src/**/*.mjs"],
+  "exclude": ["src/query.d.ts", "src/query-generator.d.ts"]
 }
