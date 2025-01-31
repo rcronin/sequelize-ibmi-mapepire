@@ -1,23 +1,27 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "allowJs": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
     "declaration": true,
-    "declarationMap": true,
-    "outDir": "./dist",
-    "strict": true,
-    "rootDir": "./src",
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "checkJs": false,
-    "stripInternal": true,
-    "exactOptionalPropertyTypes": true,
-    "experimentalDecorators": true,
+    "target": "es2021",
     "sourceMap": true,
-    "noEmit": true
-  },
-  "include": ["./src/**/*"],
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "exactOptionalPropertyTypes": false,
+    "resolveJsonModule": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@sequelize/core/decorators-legacy": ["./node_modules/@sequelize/core/lib/decorators/legacy/index.d.ts"]
+    }
+  }
 }

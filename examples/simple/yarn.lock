@@ -55,10 +55,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@rcronin/sequelize-ibmi-mapepire@latest":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@rcronin/sequelize-ibmi-mapepire/-/sequelize-ibmi-mapepire-0.0.7.tgz#46af93f9c9b07b1bce726766731e724efbea33c3"
-  integrity sha512-2Wuam9WxS1jTGPWZQz7T9VROlR7rNdtsyavPlzFswX+mzoNWEPc9nM47KjLe5fy/g3ghrOOIT2CSFoEsE/cZ3g==
+"@rcronin/sequelize-ibmi-mapepire@0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@rcronin/sequelize-ibmi-mapepire/-/sequelize-ibmi-mapepire-0.0.9.tgz#186fefb2da9b900e7769262704b38564abf3eafc"
+  integrity sha512-+dyG26/yrnyqe6LDKOikRxEajThfZDcTEkhWd6G5w/LFYsNuoUFvlocY3x22qYWxVzwpXiIqVS0xu18OEX1Hfg==
   dependencies:
     "@ibm/mapepire-js" "^0.3.0"
 
