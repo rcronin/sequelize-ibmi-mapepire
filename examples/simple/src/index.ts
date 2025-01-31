@@ -1,37 +1,6 @@
-# @rcronin/sequelize-ibmi-mapepire
-IBM i (via Mapepire) Sequelize V7 Dialect
-
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/rcronin/sequelize-ibmi-mapepire/publish.yml)
-![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/rcronin/sequelize-ibmi-mapepire)
-![NPM Version](https://img.shields.io/npm/v/%40rcronin%2Fsequelize-ibmi-mapepire)
-![NPM Downloads](https://img.shields.io/npm/dw/%40rcronin%2Fsequelize-ibmi-mapepire)
-
-## Getting Started
-
-### Prerequisites
-
-#### Service Commander
-[Github Repository](https://github.com/ThePrez/ServiceCommander-IBMi)
-
-```yum install service-commander```
-
-#### Mapepire Server
-[Documentation](https://mapepire-ibmi.github.io/guides/sysadmin/)
-
-```yum install mapepire-server```
-
-### Package Installation
-
-```npm i @rcronin/sequelize-ibmi-mapepire```
-
-Upon installation, the package will automatically install ```@ibm/mapepire-js```
-
-## Usage
-
-```ts
 import { DataTypes, InferAttributes, InferCreationAttributes, Model, Sequelize } from '@sequelize/core';
 import { Attribute, PrimaryKey, Table } from '@sequelize/core/decorators-legacy';
-import { IBMiDialect } from '@rcronin/sequelize-ibmi-mapepire';
+import { IBMiDialect } from '../../../dist';
 import 'dotenv/config'
 
 @Table({
@@ -73,7 +42,8 @@ export class DepartmentModel extends Model<InferAttributes<DepartmentModel>, Inf
   declare location: string;
 }
 
-const sequelize = new Sequelize({
+async function run() {
+  const sequelize = new Sequelize({
     dialect: IBMiDialect,
     host: process.env.HOST as string,
     user: process.env.USERNAME as string,
@@ -81,4 +51,14 @@ const sequelize = new Sequelize({
     ignoreUnauthorized: true, // false but need to validate certificate
     models: [DepartmentModel]
   });
-```
+
+  const departments = await DepartmentModel.findAll({ raw: true});
+
+  console.dir(departments);
+
+  await sequelize.close();
+  process.exit(0)
+}
+
+run();
+

@@ -1,0 +1,19 @@
+{
+  "name": "simple",
+  "version": "1.0.0",
+  "description": "Demonstrates a quick way to connect with Sequelize using Mapepire",
+  "main": "index.js",
+  "author": "rcronin",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.7",
+    "typescript": "^5.7.3",
+    "ts-node": "^10.9.2",
+    "@sequelize/core": "7.0.0-alpha.44",
+    "@rcronin/sequelize-ibmi-mapepire": "latest"
+  }
+}

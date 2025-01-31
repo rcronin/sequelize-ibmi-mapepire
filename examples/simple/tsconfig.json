@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "allowJs": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./dist",
+    "strict": true,
+    "rootDir": "./src",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "checkJs": false,
+    "stripInternal": true,
+    "exactOptionalPropertyTypes": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "noEmit": true
+  },
+  "include": ["./src/**/*"],
+}
