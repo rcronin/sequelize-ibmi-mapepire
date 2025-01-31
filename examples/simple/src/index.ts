@@ -1,6 +1,6 @@
 import { DataTypes, InferAttributes, InferCreationAttributes, Model, Sequelize } from '@sequelize/core';
 import { Attribute, PrimaryKey, Table } from '@sequelize/core/decorators-legacy';
-import { IBMiDialect } from '../../../dist';
+import { IBMiDialect } from '@rcronin/sequelize-ibmi-mapepire';
 import 'dotenv/config'
 
 @Table({
