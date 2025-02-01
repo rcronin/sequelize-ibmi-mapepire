@@ -6,6 +6,7 @@
   "repository": "https://github.com/rcronin/sequelize-ibmi-mapepire.git",
   "author": "rcronin <rcronin@daytonfreight.com>",
   "license": "MIT",
+  "keywords": ["sequelize","as400","ibmi","db2","mapepire"],
   "exports": {
     ".": {
       "import": {
