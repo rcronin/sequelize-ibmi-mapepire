@@ -6,6 +6,7 @@ import { DepartmentModel } from './models/test.model';
 
 
 async function run() {
+  console.time('run');
   const sequelize = new Sequelize({
     dialect: IBMiDialect,
     host: process.env.HOST as string,
@@ -15,13 +16,14 @@ async function run() {
     models: [DepartmentModel]
   });
 
-  const departments = await DepartmentModel.findAll({ raw: true});
+  const departments = await DepartmentModel.findAll({ where: { parent: 'E01' }});
 
-  console.dir(departments);
+  // easy way to serialize model - not recommended for production
+  console.dir(departments.map(d => JSON.parse(JSON.stringify(d))));
 
   await sequelize.close();
+  console.timeEnd('run');
   process.exit(0)
 }
 
 run();
-
