@@ -8,12 +8,7 @@ IBM i (via Mapepire) Sequelize V7 Dialect
 
 ## Getting Started
 
-### Prerequisites
-
-#### Service Commander
-[Github Repository](https://github.com/ThePrez/ServiceCommander-IBMi)
-
-```yum install service-commander```
+### IBM i Prerequisites
 
 #### Mapepire Server
 [Documentation](https://mapepire-ibmi.github.io/guides/sysadmin/)
