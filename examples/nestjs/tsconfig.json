@@ -16,6 +16,10 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@sequelize/core/decorators-legacy": ["./node_modules/@sequelize/core/lib/decorators/legacy/index.d.ts"]
+    }
   }
 }

@@ -1,7 +1,7 @@
 import { Sequelize } from '@sequelize/core';
 import { IBMiDialect } from '@rcronin/sequelize-ibmi-mapepire';
 import 'dotenv/config'
-import { DepartmentModel } from './models/test.model';
+import { DepartmentModel } from './models/department.model';
 
 
 
