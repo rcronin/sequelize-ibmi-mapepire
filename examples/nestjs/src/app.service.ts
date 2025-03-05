@@ -7,7 +7,8 @@ export class AppService {
     @Inject(DepartmentModel.name)
     private readonly departmentRepo: typeof DepartmentModel,
   ) {}
-  async getHello() {
+
+  async getDepartments() {
     const departments = await this.departmentRepo.findAll();
     return JSON.parse(JSON.stringify(departments));
   }
