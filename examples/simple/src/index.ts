@@ -12,7 +12,7 @@ async function run() {
     host: process.env.HOST as string,
     user: process.env.USERNAME as string,
     password: process.env.PASSWORD as string,
-    ignoreUnauthorized: true, // false but need to validate certificate
+    rejectUnauthorized: false, // false but need to validate certificate
     models: [DepartmentModel]
   });
 
@@ -20,6 +20,8 @@ async function run() {
 
   // easy way to serialize model - not recommended for production
   console.dir(departments.map(d => JSON.parse(JSON.stringify(d))));
+
+  console.log(await sequelize.query('select * from ltl400mod3.frp010'))
 
   await sequelize.close();
   console.timeEnd('run');
