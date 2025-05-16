@@ -16,6 +16,7 @@ export class IBMiQuery extends AbstractQuery {
     const complete = this._logQuery(sql, debug, parameters);
 
     let results;
+    let response;
     try {
       let query;
       if (parameters) {
@@ -25,7 +26,19 @@ export class IBMiQuery extends AbstractQuery {
       } else {
         query = await this.connection.query(this.sql);
       }
-      results = await query.execute();
+      response = await query.execute();
+
+      if (response.data) {
+        results = response;
+      }
+
+      while (!response.is_done) {
+        response = await query.fetchMore();
+
+        if (response.data) {
+          results.data = [...results.data, ...response.data]
+        }
+      }
       await query.close();
     } catch (error) {
       throw this.formatError(error);
