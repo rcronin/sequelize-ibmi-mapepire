@@ -1,5 +1,5 @@
 import * as Mapepire from '@ibm/mapepire-js';
-import { SQLJob, Types } from '@ibm/mapepire-js';
+import { SQLJob, DaemonServer } from '@ibm/mapepire-js';
 import type { AbstractConnection, ConnectionOptions } from '@sequelize/core';
 import { AbstractConnectionManager, AccessDeniedError, ConnectionRefusedError, HostNotFoundError } from '@sequelize/core';
 import { logger } from '@sequelize/core/_non-semver-use-at-your-own-risk_/utils/logger.js';
@@ -14,7 +14,9 @@ export interface IBMiConnection extends AbstractConnection, SQLJob {
   connected: boolean;
 }
 
-export interface IBMiConnectionOptions extends Types.DaemonServer {}
+
+
+export interface IBMiConnectionOptions extends DaemonServer {}
 
 export class IBMiConnectionManager extends AbstractConnectionManager<IBMiDialect, IBMiConnection> {
   readonly #lib: MapepireModule;

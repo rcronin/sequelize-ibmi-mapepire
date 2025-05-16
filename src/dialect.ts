@@ -18,7 +18,7 @@ const CONNECTION_OPTION_NAMES = getSynchronizedTypeKeys<IBMiConnectionOptions>({
   port: undefined,
   user: undefined,
   password: undefined,
-  ignoreUnauthorized: undefined,
+  rejectUnauthorized: undefined,
   ca: undefined
 });
 
