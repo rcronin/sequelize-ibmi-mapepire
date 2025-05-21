@@ -1,7 +1,7 @@
 import * as Mapepire from '@ibm/mapepire-js';
 import { SQLJob, DaemonServer } from '@ibm/mapepire-js';
 import type { AbstractConnection, ConnectionOptions } from '@sequelize/core';
-import { AbstractConnectionManager, AccessDeniedError, ConnectionRefusedError, HostNotFoundError } from '@sequelize/core';
+import { AbstractConnectionManager, AccessDeniedError, ConnectionAcquireTimeoutError, ConnectionRefusedError, HostNotFoundError } from '@sequelize/core';
 import { logger } from '@sequelize/core/_non-semver-use-at-your-own-risk_/utils/logger.js';
 import type { IBMiDialect } from './dialect.js';
 
@@ -50,6 +50,10 @@ export class IBMiConnectionManager extends AbstractConnectionManager<IBMiDialect
 
       if (error.message.toString().includes('Password is incorrect')) {
         throw new AccessDeniedError(error);
+      }
+
+      if (error.message.toString().includes('connect ETIMEDOUT')) {
+        throw new ConnectionAcquireTimeoutError('Timeout connecting to database', error);
       }
 
       throw error;
