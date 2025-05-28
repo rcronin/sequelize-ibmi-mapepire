@@ -73,7 +73,7 @@ const sequelize = new Sequelize({
     host: process.env.HOST as string,
     user: process.env.USERNAME as string,
     password: process.env.PASSWORD as string,
-    ignoreUnauthorized: true, // false but need to validate certificate
+    rejectUnauthorized: false, // false but need to validate certificate
     models: [DepartmentModel]
   });
 ```
