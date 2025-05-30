@@ -16,7 +16,9 @@ export interface IBMiConnection extends AbstractConnection, SQLJob {
 
 
 
-export interface IBMiConnectionOptions extends DaemonServer {}
+export interface IBMiConnectionOptions extends DaemonServer {
+  jdbcOptions?: Mapepire.JDBCOptions;
+}
 
 export class IBMiConnectionManager extends AbstractConnectionManager<IBMiDialect, IBMiConnection> {
   readonly #lib: MapepireModule;
@@ -29,7 +31,7 @@ export class IBMiConnectionManager extends AbstractConnectionManager<IBMiDialect
   async connect(config: ConnectionOptions<IBMiDialect>): Promise<IBMiConnection> {
     let connection: IBMiConnection;
     try {
-      connection = new Mapepire.SQLJob() as IBMiConnection;
+      connection = (config.jdbcOptions ? new Mapepire.SQLJob(config.jdbcOptions) : new Mapepire.SQLJob()) as IBMiConnection;
       await connection.connect(config);
     } catch (error) {
       if (!(error instanceof Error)) {
