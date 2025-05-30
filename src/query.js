@@ -28,6 +28,8 @@ export class IBMiQuery extends AbstractQuery {
       }
       response = await query.execute();
 
+      console.log(response)
+
       if (response.data) {
         results = response;
       }
