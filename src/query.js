@@ -34,11 +34,13 @@ export class IBMiQuery extends AbstractQuery {
         results = response;
       }
 
-      while (!response.is_done) {
-        response = await query.fetchMore();
+      if (response.has_results) {
+        while (!response.is_done) {
+          response = await query.fetchMore();
 
-        if (response.data) {
-          results.data = [...results.data, ...response.data]
+          if (response.data) {
+            results.data = [...results.data, ...response.data]
+          }
         }
       }
       await query.close();
