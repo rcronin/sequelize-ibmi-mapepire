@@ -19,7 +19,8 @@ const CONNECTION_OPTION_NAMES = getSynchronizedTypeKeys<IBMiConnectionOptions>({
   user: undefined,
   password: undefined,
   rejectUnauthorized: undefined,
-  ca: undefined
+  ca: undefined,
+  jdbcOptions: undefined
 });
 
 export class IBMiDialect extends AbstractDialect<IBMiDialectOptions, IBMiConnectionOptions> {
