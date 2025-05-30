@@ -206,9 +206,33 @@ export class IBMiQuery extends AbstractQuery {
   }
 
   formatError(err) {
-    if (err.message?.includes('Error connecting to the database') || err.message?.includes('08S01')) {
-      return new ConnectionRefusedError(err);
+    if (err.message.toString().includes('Error connecting to the database') 
+      || err.message.toString().includes('getaddrinfo ENOTFOUND') 
+      || err.message.toString().includes('connect ECONNREFUSED') 
+      || err.message.toString().includes('Password is incorrect') 
+      || err.message.toString().includes('connect ETIMEDOUT')) {
+      this.connection.connected = false;
+      if (err.message.toString().includes('Error connecting to the database')) {
+        return new ConnectionRefusedError(error);
+      }
+
+      if (err.message.toString().includes('getaddrinfo ENOTFOUND')) {
+        return new HostNotFoundError(error);
+      }
+
+      if (err.message.toString().includes('connect ECONNREFUSED')) {
+        return new ConnectionRefusedError(error);
+      }
+
+      if (err.message.toString().includes('Password is incorrect')) {
+        return new AccessDeniedError(error);
+      }
+
+      if (err.message.toString().includes('connect ETIMEDOUT')) {
+        return new ConnectionAcquireTimeoutError('Timeout connecting to database', error);
+      }
     }
+    
 
     const foreignKeyConstraintCodes = [
       '-530', // The insert or update value of a foreign key is invalid.

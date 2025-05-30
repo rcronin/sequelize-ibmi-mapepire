@@ -29,11 +29,14 @@ export class IBMiConnectionManager extends AbstractConnectionManager<IBMiDialect
   }
 
   async connect(config: ConnectionOptions<IBMiDialect>): Promise<IBMiConnection> {
-    let connection: IBMiConnection;
+    const connection = (config.jdbcOptions ? new Mapepire.SQLJob(config.jdbcOptions) : new Mapepire.SQLJob()) as IBMiConnection;
     try {
-      connection = (config.jdbcOptions ? new Mapepire.SQLJob(config.jdbcOptions) : new Mapepire.SQLJob()) as IBMiConnection;
       await connection.connect(config);
+      connection.connected = true;
     } catch (error) {
+      connection.connected = false;
+      debug('Error connecting to the database:', error);
+      void this.sequelize.pool.destroy(connection);
       if (!(error instanceof Error)) {
         throw error;
       }
@@ -75,15 +78,6 @@ export class IBMiConnectionManager extends AbstractConnectionManager<IBMiDialect
   }
 
   validate(connection: IBMiConnection): boolean {
-    let connected = false;
-    (async () => {
-      try {
-        const result = await connection.execute<{ connected: boolean }>('SELECT true "connected" FROM SYSIBM.SYSDUMMY1');
-        connected = result.data[0].connected;
-      } catch (error) {
-        connected = false;
-      }
-    })();
-    return connected;
+    return connection.connected && connection.getStatus() !== Mapepire.States.JobStatus.ENDED;
   }
 }
