@@ -5,6 +5,7 @@ import { rejectInvalidOptions } from '@sequelize/core/_non-semver-use-at-your-ow
 import type { IBMiConnection } from './connection-manager';
 import type { IBMiDialect } from './dialect.js';
 import { IBMiQueryInterfaceInternal } from './query-interface.internal.js';
+import { States } from '@ibm/mapepire-js';
 
 export class IBMiQueryInterface<Dialect extends IBMiDialect = IBMiDialect> extends AbstractQueryInterface<Dialect> {
   readonly #internalQueryInterface: IBMiQueryInterfaceInternal;
@@ -35,7 +36,7 @@ export class IBMiQueryInterface<Dialect extends IBMiDialect = IBMiDialect> exten
     }
 
     const connection = transaction.getConnection() as IBMiConnection;
-    await connection.endTransaction('commit');
+    await connection.endTransaction(States.TransactionEndType.COMMIT);
   }
 
   async _rollbackTransaction(transaction: Transaction, _options: RollbackTransactionOptions): Promise<void> {
@@ -44,7 +45,7 @@ export class IBMiQueryInterface<Dialect extends IBMiDialect = IBMiDialect> exten
     }
 
     const connection = transaction.getConnection() as IBMiConnection;
-    await connection.endTransaction('rollback');
+    await connection.endTransaction(States.TransactionEndType.ROLLBACK);
   }
 
   // async _setIsolationLevel(
