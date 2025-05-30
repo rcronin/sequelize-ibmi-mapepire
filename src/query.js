@@ -28,8 +28,6 @@ export class IBMiQuery extends AbstractQuery {
       }
       response = await query.execute();
 
-      console.log(response)
-
       if (response.data) {
         results = response;
       }
@@ -50,7 +48,7 @@ export class IBMiQuery extends AbstractQuery {
 
     complete();
 
-    if (results.data && results.data.length > 0) {
+    if (results && results.data && results.data.length > 0) {
       for (const row of results.data) {
         for (const column of results.metadata.columns) {
           const value = row[column.name];
