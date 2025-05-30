@@ -142,7 +142,7 @@ export class IBMiQuery extends AbstractQuery {
     }
 
     if (this.isDeleteQuery()) {
-      return results.data.length;
+      return 0;
     }
 
     if (this.isBulkUpdateQuery()) {
