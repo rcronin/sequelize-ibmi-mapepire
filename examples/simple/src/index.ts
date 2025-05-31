@@ -21,7 +21,7 @@ async function run() {
   // easy way to serialize model - not recommended for production
   console.dir(departments.map(d => JSON.parse(JSON.stringify(d))));
 
-  console.log(await sequelize.query('select * from ltl400mod3.frp010'))
+  console.log(await sequelize.query('delete from rcclib.test'))
 
   await sequelize.close();
   console.timeEnd('run');

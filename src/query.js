@@ -15,7 +15,9 @@ export class IBMiQuery extends AbstractQuery {
 
     const complete = this._logQuery(sql, debug, parameters);
 
-    let results;
+    let results = {
+      data: []
+    };
     let response;
     try {
       let query;
@@ -138,7 +140,7 @@ export class IBMiQuery extends AbstractQuery {
     }
 
     if (this.isCallQuery()) {
-      return results.data[0];
+      return results.data.length;
     }
 
     if (this.isDeleteQuery()) {
