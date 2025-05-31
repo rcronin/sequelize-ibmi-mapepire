@@ -30,8 +30,8 @@ export class IBMiQuery extends AbstractQuery {
       }
       response = await query.execute();
 
-      if (response.data) {
-        results = response;
+      if (response) {
+        results = {...results, ...response};
       }
 
       if (response.has_results) {
@@ -140,11 +140,11 @@ export class IBMiQuery extends AbstractQuery {
     }
 
     if (this.isCallQuery()) {
-      return results.data.length;
+      return results.data[0];
     }
 
     if (this.isDeleteQuery()) {
-      return 0;
+      return results.update_count
     }
 
     if (this.isBulkUpdateQuery()) {
